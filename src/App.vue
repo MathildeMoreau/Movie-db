@@ -1,125 +1,60 @@
-<script setup>
-import { RouterLink, RouterView } from "vue-router";
-import HelloWorld from "@/components/HelloWorld.vue";
+<script>
+import Header from "./components/template/Header.vue";
+import { RouterView } from "vue-router";
+import axios from 'axios';
+import Footer from "./components/template/Footer.vue";
+import MoviesList from "./components/utils/MoviesList.vue";
+
+export default {
+  name: "app",
+  components: {
+    Header,
+    Footer,
+    MoviesList,
+    RouterView,
+  },
+  data(){
+    return {
+      popularMovies: []
+    }
+  },
+  created(){
+    axios.get('https://api.themoviedb.org/3/discover/movie?api_key=ab23ecb6d0327b2f7fe052d49dd9fe3b&language=fr-FR&sort_by=release_date.desc&page=1&vote_count.gte=1000&with_watch_monetization_types=flatrate')
+    .then((res) => {
+      this.popularMovies = res.data.results
+      console.log(this.popularMovies)
+    })
+  },
+};
 </script>
 
 <template>
-  <header>
-    <img
-      alt="Vue logo"
-      class="logo"
-      src="@/assets/logo.svg"
-      width="125"
-      height="125"
-    />
+  <Header />
+  <body>
+    <div v-if="$route.path == '/'" >
+    <h2>Vos films préférés sont sur ce site !</h2>
+    <div id="container">
+      <MoviesList :movies="popularMovies"/>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
     </div>
-  </header>
-
-  <RouterView />
+    </div>
+    <div v-else>
+      <RouterView />
+    </div>
+  </body>
+  <Footer />
 </template>
 
-<style>
-@import "@/assets/base.css";
+<style lang="scss">
+@import "./assets/style/style.css";
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-
-  font-weight: normal;
-}
-
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-}
-
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
+h2{
   text-align: center;
-  margin-top: 2rem;
 }
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  body {
+#container{
     display: flex;
-    place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
-
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
     flex-wrap: wrap;
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+    margin: 0 2rem;
+    justify-content: space-around;
 }
 </style>
