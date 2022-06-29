@@ -69,6 +69,8 @@ export default {
     font-size: 1rem;
     padding: 1rem;
     justify-self: flex-end;
+    align-self: normal;
+    margin: 2rem;
   }
 }
 </style>

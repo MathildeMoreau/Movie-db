@@ -15,11 +15,11 @@ export default {
   },
   data(){
     return {
-      popularMovies: []
+      popularMovies: [],
     }
   },
   created(){
-    axios.get('https://api.themoviedb.org/3/discover/movie?api_key=ab23ecb6d0327b2f7fe052d49dd9fe3b&language=fr-FR&sort_by=release_date.desc&page=1&vote_count.gte=1000&with_watch_monetization_types=flatrate')
+    axios.get('https://api.themoviedb.org/3/discover/movie?api_key=ab23ecb6d0327b2f7fe052d49dd9fe3b&language=fr-FR&sort_by=popularity.desc&page=1&vote_count.gte=1000&with_watch_monetization_types=flatrate')
     .then((res) => {
       this.popularMovies = res.data.results
       console.log(this.popularMovies)
@@ -32,13 +32,12 @@ export default {
   <Header />
   <body>
     <div v-if="$route.path == '/'" >
-    <h2>Vos films préférés sont sur ce site !</h2>
-    <div id="container">
+    <h2>🎬 La référence du cinéma 🎬</h2>
+    <div class="container">
       <MoviesList :movies="popularMovies"/>
-
     </div>
     </div>
-    <div v-else>
+    <div v-else class="container">
       <RouterView />
     </div>
   </body>
@@ -50,8 +49,10 @@ export default {
 
 h2{
   text-align: center;
+  font-family: 'Paytone One', sans-serif;
+
 }
-#container{
+.container{
     display: flex;
     flex-wrap: wrap;
     margin: 0 2rem;
