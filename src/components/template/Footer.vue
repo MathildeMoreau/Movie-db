@@ -13,6 +13,7 @@ export default {
 <template>
 
   <footer>
+    Menu
     <Navbar />
 
   </footer>
@@ -24,6 +25,11 @@ export default {
   footer{
     background: #3D1C1C;
     padding: 2%;
+    color: $color2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     nav{
       display: flex;
       flex-direction: column;

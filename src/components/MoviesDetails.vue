@@ -52,6 +52,9 @@ export default {
       <img :src="preUrl + movieItem.poster_path" alt="" />
     </div>
     <div class="text-content">
+      <div id="genre-container">
+        <span v-for="item in movieItem.genres">{{item.name}}</span>
+      </div>
       <p>{{ movieItem.vote_average }} ⭐ - {{ movieItem.vote_count }} 👍</p>
       <p>{{ movieItem.overview }}</p>
       <div class="prods">
@@ -97,15 +100,21 @@ export default {
   font-family: "Ubuntu", sans-serif;
   .media-content {
     img {
-      width: 80%;
+      width: 450px;
     }
   }
   .text-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    #genre-container{
+      width: 30%;
+      display: flex;
+      justify-content: space-around;
+    }
     p {
-      margin: 5rem;
+      margin: 2rem;
       text-align: justify;
       font-size: 1.5rem;
       align-self: center;
@@ -126,21 +135,12 @@ export default {
 #trailers {
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 100%;
-  div {
-    width: 100%;
-    div {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      iframe {
-        width: 80%;
-        height: 30rem;
-        margin: 2rem 0;
-      }
-    }
+  iframe {
+    width: 80%;
+    height: 30rem;
+    margin: 2rem 0;
   }
 }
 </style>

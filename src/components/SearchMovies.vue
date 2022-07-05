@@ -63,6 +63,8 @@ export default {
     margin: 3rem;
     padding: 1rem;
     width: 80%;
+    border: 1px solid gray;
+    border-radius: 5px;
   }
   .eachMovie {
     display: flex;

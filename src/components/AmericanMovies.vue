@@ -1,6 +1,7 @@
 <script>
 import axios from 'axios';
 import MoviesList from "./utils/MoviesList.vue";
+import SortButtons from "./utils/SortButtons.vue";
 
 export default {
   name: "AmericanMovies",
@@ -18,6 +19,7 @@ export default {
   },
   components: {
     MoviesList,
+    SortButtons,
   }
 }
 </script>
@@ -25,6 +27,7 @@ export default {
 <template>
   <div class="french-films">
     <h2>🇺🇸 Les meilleurs films américains 🇺🇸</h2>
+    <SortButtons :films="americanMovies"/>
     <div class="french-movies">
       <MoviesList :movies="americanMovies"/>
     </div>

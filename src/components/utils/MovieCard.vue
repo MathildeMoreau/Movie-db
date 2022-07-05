@@ -62,7 +62,7 @@ export default {
   }
   img {
     width: 100%;
-    min-height: 480px;
+    height: 480px;
   }
   #description {
     padding: 0 10%;
