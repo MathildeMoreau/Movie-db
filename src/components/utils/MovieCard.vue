@@ -41,6 +41,7 @@ export default {
   border-radius: 5px;
   margin: 0.5rem;
   width: 20rem;
+  height: 900px;
   padding-bottom: 2%;
   a{
     color: black;
