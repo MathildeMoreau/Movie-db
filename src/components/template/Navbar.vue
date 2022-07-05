@@ -14,6 +14,7 @@ export default {
     <RouterLink to="/AmericanMovies">🇺🇸</RouterLink>
     <RouterLink to="/FrenchMovies">🇫🇷</RouterLink>
     <RouterLink to="/TopRated">Top 50</RouterLink>
+    <RouterLink to="/LastMovies">Derniers films</RouterLink>
     <RouterLink to="/Search">🔍</RouterLink>
   </nav>
 </template>

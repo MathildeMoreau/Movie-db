@@ -1,4 +1,6 @@
 <script>
+import { RouterLink } from "vue-router";
+
 export default {
   name: "MovieCard",
   props: ["id", "image", "title", "note", "description", "date"],
@@ -21,11 +23,13 @@ export default {
 
 <template>
   <div id="card">
-    <h3>{{ title }} - {{ note }} ⭐</h3>
-    <img :src="preUrl + image" alt="" />
-    <p id="description">{{ description }}</p>
-    <p id="release">Date de sortie : {{ formatDate(date) }}</p>
-    <button>Voir plus</button>
+    <RouterLink :to="`/movie/${id}`">
+      <h3>{{ title }} - {{ note }} ⭐</h3>
+      <img :src="preUrl + image" alt="" />
+      <p id="description">{{ description.substring(0, 200) + "..." }}</p>
+      <p id="release">Date de sortie : {{ formatDate(date) }}</p>
+      <button>Voir plus</button>
+    </RouterLink>
   </div>
 </template>
 
@@ -33,15 +37,22 @@ export default {
 @import "../../assets/style/style.scss";
 
 #card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   border: 1px solid rgba(86, 86, 86, 0.354);
   border-radius: 5px;
   margin: 0.5rem;
   width: 20rem;
   padding-bottom: 2%;
+  a{
+    color: black;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &:visited{
+      color: black;
+    }
   h3 {
+    color: $color1;
     text-align: center;
     height: 60px;
     display: flex;
@@ -50,6 +61,7 @@ export default {
   }
   img {
     width: 100%;
+    min-height: 480px;
   }
   #description {
     padding: 0 10%;
@@ -72,5 +84,6 @@ export default {
     align-self: normal;
     margin: 2rem;
   }
+}
 }
 </style>

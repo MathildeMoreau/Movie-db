@@ -15,6 +15,7 @@ export default {
 <template>
       <div v-for="movie in movies" id="movie-container">
         <MovieCard 
+        :id = "movie.id"
         :image = "movie.poster_path"
         :title = "movie.title"
         :note = "movie.vote_average"

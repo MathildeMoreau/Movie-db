@@ -10,7 +10,7 @@ export default {
     }   
   },
   created(){
-      axios.get('https://api.themoviedb.org/3/trending/movie/day?api_key=ab23ecb6d0327b2f7fe052d49dd9fe3b')
+      axios.get('https://api.themoviedb.org/3/discover/movie?api_key=ab23ecb6d0327b2f7fe052d49dd9fe3b&language=fr&sort_by=vote_average.desc&include_adult=false&include_video=false&vote_count.gte=1000')
     .then((res) => {
       this.topRated = res.data.results
       console.log(this.topRated)
