@@ -36,7 +36,7 @@ export default {
     <div class="container">
       <MoviesList :movies="popularMovies"/>
     </div>
-    </div>
+    </div>  
     <div v-else class="container">
       <RouterView />
     </div>

@@ -28,6 +28,7 @@ export default {
     .then((res) => {
       this.topRated3 = res.data.results
       this.allRated60 = this.allRated.concat(this.topRated3)
+      this.allRated60.splice(50, 10)
       console.log(this.allRated60)
     })
   },
@@ -43,7 +44,7 @@ export default {
     <h2>🔝 Top 50</h2>
     <SortButtons :films="allRated60" />
     <div class="french-movies">
-      <Top50MovieList :movies="allRated60.slice(0, 50)"/>
+      <Top50MovieList :movies="allRated60"/>
     </div>
   </div>
 </template>

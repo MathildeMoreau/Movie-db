@@ -1,5 +1,4 @@
 <script>
-import { RouterLink } from "vue-router";
 
 export default {
   name: "MovieCard",
@@ -23,16 +22,18 @@ export default {
 
 <template>
   <div id="card">
-    <RouterLink :to="`/movie/${id}`">
+    <router-link :to="`/movie/${id}`">
       <h3>{{ title }} - {{ note }} ⭐</h3>
       <div class="image-container">
         <img :src="preUrl + image" alt=""/>
-        <span v-if="index + 1">{{index + 1}}</span>
+        <div v-if="$route.path == '/TopRated'">
+          <span v-once>{{index + 1}}</span>
+        </div>
       </div>
       <p id="description">{{ description.substring(0, 200) + "..." }}</p>
       <p id="release">Date de sortie : {{ formatDate(date) }}</p>
       <button>Voir plus</button>
-    </RouterLink>
+    </router-link>
   </div>
 </template>
 

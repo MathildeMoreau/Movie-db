@@ -13,7 +13,7 @@ export default {
 </script>
 
 <template>
-      <div v-for="(movie, index) in movies" id="movie-container" :key="index">
+      <div v-for="(movie, index) in movies" id="movie-container" :key="movie.id">
         <MovieCard 
         :id = "movie.id"
         :image = "movie.poster_path"
