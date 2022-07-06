@@ -64,4 +64,12 @@ export default {
 
   }
 
+    @media all and (max-width: 480px){
+      #logo{
+        width: 50%;
+      }
+    
+    }
+
+
 </style>

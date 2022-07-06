@@ -13,14 +13,14 @@ export default {
 <template>
 
   <footer>
-    Menu
+    <h2>Menu</h2>
     <Navbar />
 
   </footer>
 
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '../../assets/style/style.scss';
   footer{
     background: #3D1C1C;
@@ -33,6 +33,9 @@ export default {
     nav{
       display: flex;
       flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: $color2;
       a{
         color: $color2;
         font-size: 0.8rem;

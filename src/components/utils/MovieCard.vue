@@ -3,7 +3,7 @@ import { RouterLink } from "vue-router";
 
 export default {
   name: "MovieCard",
-  props: ["id", "image", "title", "note", "description", "date"],
+  props: ["id", "image", "title", "note", "description", "date", "index"],
   data() {
     return {
       preUrl: "https://image.tmdb.org/t/p/original/",
@@ -25,7 +25,10 @@ export default {
   <div id="card">
     <RouterLink :to="`/movie/${id}`">
       <h3>{{ title }} - {{ note }} ⭐</h3>
-      <img :src="preUrl + image" alt="" />
+      <div class="image-container">
+        <img :src="preUrl + image" alt=""/>
+        <span v-if="index + 1">{{index + 1}}</span>
+      </div>
       <p id="description">{{ description.substring(0, 200) + "..." }}</p>
       <p id="release">Date de sortie : {{ formatDate(date) }}</p>
       <button>Voir plus</button>
@@ -60,9 +63,24 @@ export default {
     align-items: center;
     font-family: "Paytone One", sans-serif;
   }
-  img {
-    width: 100%;
-    height: 480px;
+  .image-container{
+    position: relative;
+    img {
+      width: 100%;
+      height: 480px;
+    }
+    span{
+      background: $color1;
+      width: 10%;
+      border-radius: 5px;
+      text-align: center;
+      color: $color2;
+      padding: 10px;
+      font-size: 2rem;
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+    }    
   }
   #description {
     padding: 0 10%;

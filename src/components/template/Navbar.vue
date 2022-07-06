@@ -19,7 +19,7 @@ export default {
   </nav>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 @import '../../assets/style/style.scss';
 
@@ -36,6 +36,15 @@ export default {
       font-family: 'Paytone One', sans-serif;
       &:visited{
         color: $color1;
+      }
+    }
+  }
+
+  @media all and (max-width: 480px){
+    nav{
+      flex-direction: column;
+      a{
+        font-size: 1.1rem;
       }
     }
   }

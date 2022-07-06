@@ -143,4 +143,28 @@ export default {
     margin: 2rem 0;
   }
 }
+
+@media all and (max-width: 780px){
+  .content{
+    flex-direction: column;
+    .media-content{
+      display: flex;
+      justify-content: center;
+      img{
+        width: 80%;
+      }
+    }
+    .text-content{
+      .prods{
+        flex-wrap: wrap;
+      }
+    }
+  }
+
+  #trailers{
+    iframe{
+      width: 100%;
+    }
+  }
+}
 </style>
